@@ -1,5 +1,5 @@
 function fetchImages(query) {
-  const apiKey = '45115917-7726aefcae109b05971acac93'
+  const apiKey = '45407925-ce6a1b403a4faf3a2586351fb'
   const searchParams = new URLSearchParams({
     key: apiKey,
     q: query,
