@@ -1,22 +1,18 @@
-function fetchImages(query) {
-  const apiKey = '45407925-ce6a1b403a4faf3a2586351fb'
-  const searchParams = new URLSearchParams({
-    key: apiKey,
-    q: query,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: 'true',
-  })
+export default function createHttpRequest(options) {
+  const queryString = new URLSearchParams(options).toString();
+  const url = `https://pixabay.com/api/?${queryString}`;
 
-  const fetchUrl = `https://pixabay.com/api/?${searchParams}`
-
-  return fetch(fetchUrl).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status)
-    }
-
-    return response.json()
-  })
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      throw error;
+    });
 }
-
-export { fetchImages }
